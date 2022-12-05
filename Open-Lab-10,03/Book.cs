@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -15,48 +16,48 @@ namespace Open_Lab_10._03
         private string category;
         private string author;
         private int releaseDate;
-        public string Title(string strtitle)
+
+        public string Title
+        { get { return title; } set { title= value; } }
+
+        public int Pages
+        { get { return pages; } set { pages= value; } }
+
+        public string Category
+        { get { return category; } set { category= value; } }
+
+        public int ReleaseDate
         {
-            this.title = strtitle;
-            return strtitle;
+            get => releaseDate;
+            set
+            {
+                if ((value >= 2021) || (value <= 1450))
+                {
+                    releaseDate = -1;
+                }
+                else
+                {
+                    releaseDate = value;
+                }
+            }
+
         }
 
-        public int Pages(int intpages)
-        {
-            this.pages = intpages;
-            return intpages;
-        }
-
-        public string Category(string strcategory)
-        {
-            this.category = strcategory;
-            return strcategory;
-        }
-
-        public string Author(string strauthor)
-        {
-            this.author = strauthor;
-            return strauthor;
-        }
-
-        public int ReleaseDate(int intreleaseDate)
-        {
-            this.releaseDate = intreleaseDate;
-            return intreleaseDate;
-        }
+        public string Author
+        { get { return author; } set { author= value; } }
 
         public void ans()
         {
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Title :        " + Title(title));
+            Console.WriteLine("Title :        " + title);
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Pages :        " + Pages(pages));
+            Console.WriteLine("Pages :        " + pages);
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Category :     " + Category(category));
+            Console.WriteLine("Category :     " + category);
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Author :       " + Author(author));
+            Console.WriteLine("Author :       " + author);
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Release Date : " + ReleaseDate(releaseDate));
+            Console.WriteLine("Release Date : " + releaseDate);
             Console.WriteLine("----------------------------------------");
         }
 
